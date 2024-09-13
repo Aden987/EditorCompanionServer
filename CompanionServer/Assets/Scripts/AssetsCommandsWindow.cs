@@ -9,6 +9,8 @@ public class AssetsCommandsWindow : EditorWindow
     private string propertyValue = "";
     private string resultMessage = "";
 
+    private Vector2 scrollPosition; // For handling the scrollbar position
+
     [MenuItem("Window/Assets Commands")]
     public static void ShowWindow()
     {
@@ -17,6 +19,9 @@ public class AssetsCommandsWindow : EditorWindow
 
     private void OnGUI()
     {
+        // Start ScrollView
+        scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition, GUILayout.Width(position.width), GUILayout.Height(position.height));
+
         GUILayout.Label("Assets Commands", EditorStyles.boldLabel);
 
         // Import Asset Section
@@ -33,7 +38,7 @@ public class AssetsCommandsWindow : EditorWindow
 
         // Delete Asset Section
         GUILayout.Label("Delete Asset", EditorStyles.boldLabel);
-        GUILayout.Label("Asset Path");
+        GUILayout.Label("Asset Name");
         assetPath = EditorGUILayout.TextField(assetPath);
 
         if (GUILayout.Button("Delete Asset"))
@@ -60,10 +65,10 @@ public class AssetsCommandsWindow : EditorWindow
 
         // Move Asset Section
         GUILayout.Label("Move Asset", EditorStyles.boldLabel);
-        GUILayout.Label("Old Asset Path");
+        GUILayout.Label("Asset Name");
         assetPath = EditorGUILayout.TextField(assetPath);
 
-        GUILayout.Label("New Asset Path");
+        GUILayout.Label("Move to Folder:");
         newAssetPath = EditorGUILayout.TextField(newAssetPath);
 
         if (GUILayout.Button("Move Asset"))
@@ -75,7 +80,7 @@ public class AssetsCommandsWindow : EditorWindow
 
         // Get Asset Properties Section
         GUILayout.Label("Get Asset Properties", EditorStyles.boldLabel);
-        GUILayout.Label("Asset Path");
+        GUILayout.Label("Asset Name");
         assetPath = EditorGUILayout.TextField(assetPath);
 
         if (GUILayout.Button("Get Asset Properties"))
@@ -87,10 +92,10 @@ public class AssetsCommandsWindow : EditorWindow
 
         // Set Asset Property Section
         GUILayout.Label("Set Asset Property", EditorStyles.boldLabel);
-        GUILayout.Label("Asset Path");
+        GUILayout.Label("Asset Name");
         assetPath = EditorGUILayout.TextField(assetPath);
 
-        GUILayout.Label("Property Name");
+        GUILayout.Label("Property");
         propertyName = EditorGUILayout.TextField(propertyName);
 
         GUILayout.Label("Property Value");
@@ -106,7 +111,11 @@ public class AssetsCommandsWindow : EditorWindow
         // Result Message
         GUILayout.Label("Result", EditorStyles.boldLabel);
         GUILayout.Label(resultMessage, EditorStyles.wordWrappedLabel);
+
+        // End ScrollView
+        EditorGUILayout.EndScrollView();
     }
+
 
     private void SendCommand(string command)
     {
