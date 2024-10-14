@@ -7,6 +7,7 @@ public class ScriptingCommandsWindow : EditorWindow
     private string newScriptName = "";
     private string scriptContent = "";
     private string resultMessage = "";
+    private string lineNumber = "";
 
     [MenuItem("Window/Scripting Commands")]
     public static void ShowWindow()
@@ -35,12 +36,15 @@ public class ScriptingCommandsWindow : EditorWindow
         GUILayout.Label("Script Name");
         scriptName = EditorGUILayout.TextField(scriptName);
 
+        GUILayout.Label("Line Number");
+        lineNumber = EditorGUILayout.TextArea(lineNumber);
+
         GUILayout.Label("New Script Content");
         scriptContent = EditorGUILayout.TextArea(scriptContent);
 
         if (GUILayout.Button("Edit Script"))
         {
-            SendCommand($"EditScript,{scriptName}|{scriptContent}");
+            SendCommand($"EditScript,{scriptName}|{lineNumber}|{scriptContent}");
         }
 
         GUILayout.Space(10);

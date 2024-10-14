@@ -362,6 +362,7 @@
 "Assets/Scripts/ClientCommandsWindow.cs"
 "Assets/Scripts/DebuggingCommandsWindow.cs"
 "Assets/Scripts/EditorCompanionServer.cs"
+"Assets/Scripts/GitCommandsWindow.cs"
 "Assets/Scripts/HierarchyCommandsWindow.cs"
 "Assets/Scripts/PrefabCommandsWindow.cs"
 "Assets/Scripts/ProjectSettingsCommandsWindow.cs"

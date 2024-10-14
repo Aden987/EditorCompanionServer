@@ -70,5 +70,9 @@ public class ClientCommandsWindow : EditorWindow
         {
             UtilitiesCommandsWindow.ShowWindow();
         }
+        if (GUILayout.Button("Git Commands"))
+        {
+            GitCommandsWindow.ShowWindow();
+        }
     }
 }
